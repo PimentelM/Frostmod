@@ -37,3 +37,17 @@ Need:
 	- Call it multiple times with same arguments? [ Context will change though ]
 	- See params and return
 
+
+Tasks:
+
+
+Download the il2cpp dumper 
+Download the apk and unzip it
+
+Get symbols for both versions of the lib 
+
+Open arm and arm64 on decompiler to see which one generates more readable C code
+
+
+
+Dig into the functions we saw earlier.
