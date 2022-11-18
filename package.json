@@ -1,17 +1,19 @@
 {
-  "name": "frida-agent-example",
+  "name": "playground",
+  "main": "index.ts",
   "version": "1.0.0",
-  "description": "Example Frida agent written in TypeScript",
   "private": true,
-  "main": "agent/index.ts",
   "scripts": {
-    "prepare": "npm run build",
-    "build": "frida-compile agent/index.ts -o _agent.js -c",
-    "watch": "frida-compile agent/index.ts -o _agent.js -w"
+    "build": "frida-compile -o _.js -w index.ts",
+    "attach": "run() { frida -U \"$1\" -l _.js --runtime=v8; }; run",
+    "spawn": "run() { frida -U -f \"$1\" -l _.js --no-pause --runtime=v8; }; run",
+    "app0-spawn": "npm run spawn com.example.application0",
+    "app1": "npm run \"Application1 Name\"",
+    "app1-spawn": "npm run spawn com.example.application1"
   },
   "devDependencies": {
-    "@types/frida-gum": "^18.1.0",
-    "@types/node": "^18.0.6",
-    "frida-compile": "^15.0.8"
+    "@types/frida-gum": "^17.1.0",
+    "frida-compile": "^10.2.4",
+    "frida-il2cpp-bridge": "*"
   }
 }
